@@ -1,5 +1,6 @@
 * {
   font-family: 'Karla', sans-serif;
+  color: #293264;
   margin: 0;
   padding: 0;
 }
@@ -16,12 +17,10 @@
 }
 
 .title {
-  color: #293264;
   margin-bottom: 5px;
 }
 
 .description {
-  color: #293264;
   margin-top: 10px;
   margin-bottom: 5px;
 }
@@ -65,4 +64,51 @@
   top: -75px;
   right: -75px;
   z-index: -10;
+}
+
+.answer-style {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.question {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.answer {
+  width: 150px;
+  height: 30px;
+  border: 1px solid #4D5B9E;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.line {
+  width: 50rem;
+  border: 0.794239px solid #DBDEF0;
+  transform: rotate(-0.05deg);
+  margin: 10px;
+}
+
+.check-btn {
+  height: 50px;
+  width: 160px;
+  border-radius: 15px;
+  border: none;
+  background: #4D5B9E;
+  color: white;
+  margin-top: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.check-btn:active {
+  box-shadow: inset 7px 7px 12px -1px rgba(0, 0, 0, 0.7);
+}
+
+.check-btn:hover {
+  background-color: #293264;
 }
