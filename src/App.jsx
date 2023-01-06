@@ -6,15 +6,16 @@ export default function App() {
 
   const [results, setResults] = useState([])
   const [quiz, setQuiz] = useState(false)
+  const selectedAnswer = ['', '', '', '', '']
 
   function toggleStart() {
     setQuiz(prevShown => !prevShown)
   }
 
-  const quizQuestions = results?.map(data =>
-    <Questions key={data.question} question={data.question}
+  const quizQuestions = results?.map((data, index) =>
+    <Questions key={index} questionNo={index} question={data.question}
       incorrect_answers={data.incorrect_answers}
-      correct_answers={data.correct_answer} />)
+      correct_answers={data.correct_answer} selectedAnswer={selectedAnswer} />)
 
   useEffect(function () {
     fetch("https://opentdb.com/api.php?amount=5")
@@ -24,6 +25,17 @@ export default function App() {
         console.log(data)
       })
   }, [quiz])
+
+  const checkAnswer = () => {
+    for (let i = 0; i < 5; i++) {
+      if (selectedAnswer[i] === results[i].correct_answer) {
+        console.log("correct")
+      }
+      else {
+        console.log("false")
+      }
+    }
+  }
 
   let landingText = <>
     <h1 className="title">Quizzical</h1>
@@ -35,7 +47,7 @@ export default function App() {
     <div className="main">
       <div className="design-one"></div>
       <div className="design-two"></div>
-      {!quiz ? landingText : <>{quizQuestions} <button className='check-btn'>Check Answers</button></>}
+      {!quiz ? landingText : <>{quizQuestions} <button className='check-btn' onClick={checkAnswer}>Check Answers</button></>}
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 
 const Questions = (props) => {
 
@@ -9,15 +10,10 @@ const Questions = (props) => {
         options = props.incorrect_answers
         options.push(props.correct_answers)
     }
-    // let options = props.incorrect_answers
-    // options.push(props.correct_answers)
 
-    function shuffle(options) {
-        return options.sort(() => Math.random() - 0.5);
+    console.log(props.questionNo)
 
-    }
-
-    let shuffledOptions = shuffle(options)
+    const [selectedOption, setSelectedOption] = useState("")
 
     return (
         <div>
@@ -26,8 +22,12 @@ const Questions = (props) => {
             </div>
             <div className='answer-style'>
 
-                {shuffledOptions.map(option => (
-                    <button className='answer'>{option}</button>
+                {options.map(option => (
+                    <button onClick={() => {
+                        setSelectedOption(option);
+                        props.selectedAnswer[props.questionNo] = option;
+                    }}
+                        className={selectedOption === option ? 'selected-answer' : 'answer'}>{option}</button>
 
                 ))}
 
