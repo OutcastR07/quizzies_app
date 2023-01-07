@@ -6,6 +6,7 @@ export default function App() {
 
   const [results, setResults] = useState([])
   const [quiz, setQuiz] = useState(false)
+  const [afterCheck, setAfterCheck] = useState(false)
   const selectedAnswer = ['', '', '', '', '']
 
   function toggleStart() {
@@ -15,7 +16,7 @@ export default function App() {
   const quizQuestions = results?.map((data, index) =>
     <Questions key={index} questionNo={index} question={data.question}
       incorrect_answers={data.incorrect_answers}
-      correct_answers={data.correct_answer} selectedAnswer={selectedAnswer} />)
+      correct_answers={data.correct_answer} selectedAnswer={selectedAnswer} afterCheck={afterCheck} />)
 
   useEffect(function () {
     fetch("https://opentdb.com/api.php?amount=5")
@@ -27,14 +28,7 @@ export default function App() {
   }, [quiz])
 
   const checkAnswer = () => {
-    for (let i = 0; i < 5; i++) {
-      if (selectedAnswer[i] === results[i].correct_answer) {
-        console.log("correct")
-      }
-      else {
-        console.log("false")
-      }
-    }
+    setAfterCheck(prevShown => !prevShown)
   }
 
   let landingText = <>

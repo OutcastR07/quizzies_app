@@ -125,3 +125,25 @@
 .check-btn:hover {
   background-color: #293264;
 }
+
+.green {
+  width: 150px;
+  height: 30px;
+  border: 1px solid #4D5B9E;
+  background-color: #94D7A2;
+  color: #293264;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.red {
+  width: 150px;
+  height: 30px;
+  border: 1px solid #4D5B9E;
+  background-color: #F8BCBC;
+  color: #293264;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}

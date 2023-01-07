@@ -15,6 +15,30 @@ const Questions = (props) => {
 
     const [selectedOption, setSelectedOption] = useState("")
 
+    const finalResult = (selectedOption, option) => {
+        if (props.afterCheck) {
+            //greem
+            if (selectedOption === option && option === props.correct_answers) {
+                return 'green'
+            }
+            //red
+            if (selectedOption === option && option != props.correct_answers) {
+                return 'red'
+            }
+            //answer
+            else return 'answer'
+        }
+        else {
+            if (selectedOption === option) {
+                return 'selected-answer'
+            } else {
+                return 'answer'
+            }
+        }
+    }
+
+
+
     return (
         <div>
             <div className='question-style'>
@@ -27,7 +51,7 @@ const Questions = (props) => {
                         setSelectedOption(option);
                         props.selectedAnswer[props.questionNo] = option;
                     }}
-                        className={selectedOption === option ? 'selected-answer' : 'answer'}>{option}</button>
+                        className={finalResult(selectedOption, option)}>{option}</button>
 
                 ))}
 
